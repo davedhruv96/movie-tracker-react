@@ -1,134 +1,197 @@
-import React from 'react'
+import React from "react";
 
 function Trailers() {
-    return (
-        <div class="trailers">
-            <div class="container">
-                <div class="row ipad-width">
-                    <div class="col-md-8 col-sm-12 col-xs-12">
-                        <div class="title-hd">
-                            <h2>in theater</h2>
-                            <a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
-                        </div>
-                        <div class="video-style-2">
-                            <div class="slider-for">
-                                <div>
-                                    <iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/1Q8fG0TtVAY"></iframe>
-                                </div>
-                                <div>
-                                    <iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/w0qQkSuWOS8"></iframe>
-                                </div>
-                                <div>
-                                    <iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/44LdLqgOpjo"></iframe>
-                                </div>
-                                <div>
-                                    <iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/gbug3zTm3Ws"></iframe>
-                                </div>
-                                <div>
-                                    <iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/e3Nl_TCQXuw"></iframe>
-                                </div>
-                                <div>
-                                    <iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/NxhEZG0k9_w"></iframe>
-                                </div>
-                            </div>
-                            <div class="slider-nav">
-                                <div class="item">
-                                    <div class="trailer-img">
-                                        <img src="images/uploads/trailer7.jpg" alt="photo by Barn Images" />
-                                    </div>
-                                    <div class="trailer-infor">
-                                        <h4 class="desc">Wonder Woman</h4>
-                                        <p>2:30</p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="trailer-img">
-                                        <img src="images/uploads/trailer2.jpg" alt="photo by Barn Images" />
-                                    </div>
-                                    <div class="trailer-infor">
-                                        <h4 class="desc">Oblivion: Official Teaser Trailer</h4>
-                                        <p>2:37</p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="trailer-img">
-                                        <img src="images/uploads/trailer6.jpg" alt="photo by Joshua Earle" />
-                                    </div>
-                                    <div class="trailer-infor">
-                                        <h4 class="desc">Exclusive Interview:  Skull Island</h4>
-                                        <p>2:44</p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="trailer-img">
-                                        <img src="images/uploads/trailer3.png" alt="photo by Alexander Dimitrov" />
-                                    </div>
-                                    <div class="trailer-infor">
-                                        <h4 class="desc">Logan: Director James Mangold Interview</h4>
-                                        <p>2:43</p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="trailer-img">
-                                        <img src="images/uploads/trailer4.png" alt="photo by Wojciech Szaturski" />
-                                    </div>
-                                    <div class="trailer-infor">
-                                        <h4 class="desc">Beauty and the Beast: Official Teaser Trailer 2</h4>
-                                        <p>2: 32</p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="trailer-img">
-                                        <img src="images/uploads/trailer5.jpg" alt="photo by Wojciech Szaturski" />
-                                    </div>
-                                    <div class="trailer-infor">
-                                        <h4 class="desc">Fast&Furious 8</h4>
-                                        <p>3:11</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12 col-xs-12">
-                        <div class="sidebar">
-                            <div class="celebrities">
-                                <h4 class="sb-title">Spotlight Celebrities</h4>
-                                <div class="celeb-item">
-                                    <a href="#"><img src="images/uploads/ava1.jpg" alt="" /></a>
-                                    <div class="celeb-author">
-                                        <h6><a href="#">Samuel N. Jack</a></h6>
-                                        <span>Actor</span>
-                                    </div>
-                                </div>
-                                <div class="celeb-item">
-                                    <a href="#"><img src="images/uploads/ava2.jpg" alt="" /></a>
-                                    <div class="celeb-author">
-                                        <h6><a href="#">Benjamin Carroll</a></h6>
-                                        <span>Actor</span>
-                                    </div>
-                                </div>
-                                <div class="celeb-item">
-                                    <a href="#"><img src="images/uploads/ava3.jpg" alt="" /></a>
-                                    <div class="celeb-author">
-                                        <h6><a href="#">Beverly Griffin</a></h6>
-                                        <span>Actor</span>
-                                    </div>
-                                </div>
-                                <div class="celeb-item">
-                                    <a href="#"><img src="images/uploads/ava4.jpg" alt="" /></a>
-                                    <div class="celeb-author">
-                                        <h6><a href="#">Justin Weaver</a></h6>
-                                        <span>Actor</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <div className="trailers">
+      <div className="container">
+        <div className="row ipad-width">
+          <div className="col-md-8 col-sm-12 col-xs-12">
+            <div className="title-hd">
+              <h2>in theater</h2>
+              <a href="#" className="viewall">
+                View all <i className="ion-ios-arrow-right"></i>
+              </a>
             </div>
+            {/* <div className="video-style-2">
+              <div className="slider-for">
+                <div>
+                  <iframe
+                    className="item-video"
+                    src="#"
+                    data-src="https://www.youtube.com/embed/1Q8fG0TtVAY"
+                  ></iframe>
+                </div>
+                <div>
+                  <iframe
+                    className="item-video"
+                    src="#"
+                    data-src="https://www.youtube.com/embed/w0qQkSuWOS8"
+                  ></iframe>
+                </div>
+                <div>
+                  <iframe
+                    className="item-video"
+                    src="#"
+                    data-src="https://www.youtube.com/embed/44LdLqgOpjo"
+                  ></iframe>
+                </div>
+                <div>
+                  <iframe
+                    className="item-video"
+                    src="#"
+                    data-src="https://www.youtube.com/embed/gbug3zTm3Ws"
+                  ></iframe>
+                </div>
+                <div>
+                  <iframe
+                    className="item-video"
+                    src="#"
+                    data-src="https://www.youtube.com/embed/e3Nl_TCQXuw"
+                  ></iframe>
+                </div>
+                <div>
+                  <iframe
+                    className="item-video"
+                    src="#"
+                    data-src="https://www.youtube.com/embed/NxhEZG0k9_w"
+                  ></iframe>
+                </div>
+              </div>
+              <div className="slider-nav">
+                <div className="item">
+                  <div className="trailer-img">
+                    <img
+                      src="images/uploads/trailer7.jpg"
+                      alt="photo by Barn Images"
+                    />
+                  </div>
+                  <div className="trailer-infor">
+                    <h4 className="desc">Wonder Woman</h4>
+                    <p>2:30</p>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="trailer-img">
+                    <img
+                      src="images/uploads/trailer2.jpg"
+                      alt="photo by Barn Images"
+                    />
+                  </div>
+                  <div className="trailer-infor">
+                    <h4 className="desc">Oblivion: Official Teaser Trailer</h4>
+                    <p>2:37</p>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="trailer-img">
+                    <img
+                      src="images/uploads/trailer6.jpg"
+                      alt="photo by Joshua Earle"
+                    />
+                  </div>
+                  <div className="trailer-infor">
+                    <h4 className="desc">Exclusive Interview: Skull Island</h4>
+                    <p>2:44</p>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="trailer-img">
+                    <img
+                      src="images/uploads/trailer3.png"
+                      alt="photo by Alexander Dimitrov"
+                    />
+                  </div>
+                  <div className="trailer-infor">
+                    <h4 className="desc">
+                      Logan: Director James Mangold Interview
+                    </h4>
+                    <p>2:43</p>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="trailer-img">
+                    <img
+                      src="images/uploads/trailer4.png"
+                      alt="photo by Wojciech Szaturski"
+                    />
+                  </div>
+                  <div className="trailer-infor">
+                    <h4 className="desc">
+                      Beauty and the Beast: Official Teaser Trailer 2
+                    </h4>
+                    <p>2: 32</p>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="trailer-img">
+                    <img
+                      src="images/uploads/trailer5.jpg"
+                      alt="photo by Wojciech Szaturski"
+                    />
+                  </div>
+                  <div className="trailer-infor">
+                    <h4 className="desc">Fast&Furious 8</h4>
+                    <p>3:11</p>
+                  </div>
+                </div>
+              </div>
+            </div> */}
+          </div>
+          <div className="col-md-4 col-sm-12 col-xs-12">
+            <div className="sidebar">
+              <div className="celebrities">
+                <h4 className="sb-title">Spotlight Celebrities</h4>
+                <div className="celeb-item">
+                  <a href="#">
+                    <img src="images/uploads/ava1.jpg" alt="" />
+                  </a>
+                  <div className="celeb-author">
+                    <h6>
+                      <a href="#">Samuel N. Jack</a>
+                    </h6>
+                    <span>Actor</span>
+                  </div>
+                </div>
+                <div className="celeb-item">
+                  <a href="#">
+                    <img src="images/uploads/ava2.jpg" alt="" />
+                  </a>
+                  <div className="celeb-author">
+                    <h6>
+                      <a href="#">Benjamin Carroll</a>
+                    </h6>
+                    <span>Actor</span>
+                  </div>
+                </div>
+                <div className="celeb-item">
+                  <a href="#">
+                    <img src="images/uploads/ava3.jpg" alt="" />
+                  </a>
+                  <div className="celeb-author">
+                    <h6>
+                      <a href="#">Beverly Griffin</a>
+                    </h6>
+                    <span>Actor</span>
+                  </div>
+                </div>
+                <div className="celeb-item">
+                  <a href="#">
+                    <img src="images/uploads/ava4.jpg" alt="" />
+                  </a>
+                  <div className="celeb-author">
+                    <h6>
+                      <a href="#">Justin Weaver</a>
+                    </h6>
+                    <span>Actor</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default Trailers
+export default Trailers;

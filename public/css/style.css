@@ -4724,9 +4724,29 @@ ul {
 .title-hd-sm a i {
   margin-left: 5px;
 }
+.btn:hover{
+  color: #dcf836;
+}
+li .active{
+  color: #dcf836;
+}
+.btn{
+  all: unset;
+  cursor: pointer;
+  background-color: inherit;
+  color: white;
+}
+.button-tab{
+  margin-right: 20px;
+}
 .tabs {
   margin-bottom: 60px;
   overflow: hidden;
+}
+.button-links{
+  position: relative;
+  display: flex;
+  justify-content: start;
 }
 .tabs ul.tab-links,
 .tabs ul.tab-links-2,

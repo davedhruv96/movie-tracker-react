@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 import MovieSingle from "./components/MovieSingle";
 import MovieGrid from "./components/MovieGrid";
+import SeriesSingle from "./components/SeriesSingle";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
-            <Route path="movie-details" element={<MovieSingle />} />
-            <Route path="movie-grid" element={<MovieGrid />} />
+            <Route path="/movie/:id" element={<MovieSingle />} />
+            <Route path="/movie-grid/" element={<MovieGrid />} />
+            <Route path="/tv/:id" element={<SeriesSingle />} />
           </Route>
         </Routes>
       </BrowserRouter>

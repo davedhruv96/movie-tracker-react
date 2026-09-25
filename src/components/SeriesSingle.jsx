@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function MovieSingle() {
+function SeriesSingle() {
   const { id } = useParams();
   const [data, setData] = useState({});
-  const [cast, setCast] = useState([]);
 
-  const apiUrl = "https://api.themoviedb.org/3/movie/" + id;
+  const apiUrl = "https://api.themoviedb.org/3/tv/" + id;
 
   useEffect(() => {
     fetch(apiUrl, {
@@ -18,125 +17,124 @@ function MovieSingle() {
     })
       .then((res) => res.json())
       .then((res) => setData(res));
-
-      fetch(apiUrl + "/credits", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + import.meta.env.VITE_TOKEN,
-        "Content-Type": "application/json",
-      },
-    })
-      .then(res => res.json())
-      .then(res => setCast(res.cast));
   }, []);
-
   return (
     <>
-      <div className="hero mv-single-hero">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12"></div>
+      <div class="hero sr-single-hero sr-single">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              {/* <h1> movie listing - list</h1>
+              <ul class="breadcumb">
+                <li class="active">
+                  <a href="#">Home</a>
+                </li>
+                <li>
+                  {" "}
+                  <span class="ion-ios-arrow-right"></span> movie listing
+                </li>
+              </ul> */}
+            </div>
           </div>
         </div>
       </div>
-
-      <div className="page-single movie-single movie_single">
-        <div className="container">
-          <div className="row ipad-width2">
-            <div className="col-md-4 col-sm-12 col-xs-12">
-              <div className="movie-img sticky-sb">
+      <div class="page-single movie-single movie_single">
+        <div class="container">
+          <div class="row ipad-width2">
+            <div class="col-md-4 col-sm-12 col-xs-12">
+              <div class="movie-img sticky-sb">
                 <img
                   src={"https://image.tmdb.org/t/p/w342/" + data.poster_path}
                   alt=""
                 />
-                <div className="movie-btn">
-                  <div className="btn-transform transform-vertical red">
+                <div class="movie-btn">
+                  <div class="btn-transform transform-vertical red">
                     <div>
-                      <a href="#" className="item item-1 redbtn">
+                      <a href="#" class="item item-1 redbtn">
                         {" "}
-                        <i className="ion-play"></i> Watch Trailer
+                        <i class="ion-play"></i> Watch Trailer
                       </a>
                     </div>
                     <div>
                       <a
                         href="https://www.youtube.com/embed/o-0hcF97wy0"
-                        className="item item-2 redbtn fancybox-media hvr-grow"
+                        class="item item-2 redbtn fancybox-media hvr-grow"
                       >
-                        <i className="ion-play"></i>
+                        <i class="ion-play"></i>
                       </a>
                     </div>
                   </div>
-                  <div className="btn-transform transform-vertical">
+                  <div class="btn-transform transform-vertical">
                     <div>
-                      <a href="#" className="item item-1 yellowbtn">
+                      <a href="#" class="item item-1 yellowbtn">
                         {" "}
-                        <i className="ion-card"></i> Buy ticket
+                        <i class="ion-card"></i> Buy ticket
                       </a>
                     </div>
                     <div>
-                      <a href="#" className="item item-2 yellowbtn">
-                        <i className="ion-card"></i>
+                      <a href="#" class="item item-2 yellowbtn">
+                        <i class="ion-card"></i>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-8 col-sm-12 col-xs-12">
-              <div className="movie-single-ct main-content">
-                <h1 className="bd-hd">
-                  {data.title} <span>{data.release_date?.slice(0, 4)}</span>
+            <div class="col-md-8 col-sm-12 col-xs-12">
+              <div class="movie-single-ct main-content">
+                <h1 class="bd-hd">
+                  {data.name} <span>{" - " + data.status}</span>
                 </h1>
-                <div className="social-btn">
-                  <a href="#" className="parent-btn">
-                    <i className="ion-heart"></i> Add to Favorite
+                <div class="social-btn">
+                  <a href="#" class="parent-btn">
+                    <i class="ion-heart"></i> Add to Favorite
                   </a>
-                  <div className="hover-bnt">
-                    <a href="#" className="parent-btn">
-                      <i className="ion-android-share-alt"></i>share
+                  <div class="hover-bnt">
+                    <a href="#" class="parent-btn">
+                      <i class="ion-android-share-alt"></i>share
                     </a>
-                    <div className="hvr-item">
-                      <a href="#" className="hvr-grow">
-                        <i className="ion-social-facebook"></i>
+                    <div class="hvr-item">
+                      <a href="#" class="hvr-grow">
+                        <i class="ion-social-facebook"></i>
                       </a>
-                      <a href="#" className="hvr-grow">
-                        <i className="ion-social-twitter"></i>
+                      <a href="#" class="hvr-grow">
+                        <i class="ion-social-twitter"></i>
                       </a>
-                      <a href="#" className="hvr-grow">
-                        <i className="ion-social-googleplus"></i>
+                      <a href="#" class="hvr-grow">
+                        <i class="ion-social-googleplus"></i>
                       </a>
-                      <a href="#" className="hvr-grow">
-                        <i className="ion-social-youtube"></i>
+                      <a href="#" class="hvr-grow">
+                        <i class="ion-social-youtube"></i>
                       </a>
                     </div>
                   </div>
                 </div>
-                <div className="movie-rate">
-                  <div className="rate">
-                    <i className="ion-android-star"></i>
+                <div class="movie-rate">
+                  <div class="rate">
+                    <i class="ion-android-star"></i>
                     <p>
                       <span>{data.vote_average}</span> /10
                       <br />
-                      <span className="rv">{data.vote_count} Reviews</span>
+                      <span class="rv">{data.vote_count} Reviews</span>
                     </p>
                   </div>
-                  <div className="rate-star">
+                  <div class="rate-star">
                     <p>Rate This Movie: </p>
-                    <i className="ion-ios-star"></i>
-                    <i className="ion-ios-star"></i>
-                    <i className="ion-ios-star"></i>
-                    <i className="ion-ios-star"></i>
-                    <i className="ion-ios-star"></i>
-                    <i className="ion-ios-star"></i>
-                    <i className="ion-ios-star"></i>
-                    <i className="ion-ios-star"></i>
-                    <i className="ion-ios-star-outline"></i>
+                    <i class="ion-ios-star"></i>
+                    <i class="ion-ios-star"></i>
+                    <i class="ion-ios-star"></i>
+                    <i class="ion-ios-star"></i>
+                    <i class="ion-ios-star"></i>
+                    <i class="ion-ios-star"></i>
+                    <i class="ion-ios-star"></i>
+                    <i class="ion-ios-star"></i>
+                    <i class="ion-ios-star-outline"></i>
                   </div>
                 </div>
-                <div className="movie-tabs">
-                  <div className="tabs">
-                    <ul className="tab-links tabs-mv">
-                      <li className="active">
+                <div class="movie-tabs">
+                  <div class="tabs">
+                    <ul class="tab-links tabs-mv tabs-series">
+                      <li class="active">
                         <a href="#overview">Overview</a>
                       </li>
                       <li>
@@ -149,51 +147,79 @@ function MovieSingle() {
                         <a href="#media"> Media</a>
                       </li>
                       <li>
-                        <a href="#moviesrelated"> Related Movies</a>
+                        <a href="#season"> Season</a>
+                      </li>
+                      <li>
+                        <a href="#moviesrelated"> Related Shows</a>
                       </li>
                     </ul>
-                    <div className="tab-content">
-                      <div id="overview" className="tab active">
-                        <div className="row">
-                          <div className="col-md-8 col-sm-12 col-xs-12">
-                            <p>{data.overview}</p>
-                            <div className="title-hd-sm">
-                              <h4>Videos & Photos</h4>
-                              <a href="#" className="time">
-                                All 5 Videos & 245 Photos{" "}
-                                <i className="ion-ios-arrow-right"></i>
+                    <div class="tab-content">
+                      <div id="overview" class="tab active">
+                        <div class="row">
+                          <div class="col-md-8 col-sm-12 col-xs-12">
+                            <p>
+                              {data.overview}
+                            </p>
+                            <div class="title-hd-sm">
+                              <h4>Current Season</h4>
+                              <a href="#" class="time">
+                                View All Seasons{" "}
+                                <i class="ion-ios-arrow-right"></i>
                               </a>
                             </div>
-                            <div className="mvsingle-item ov-item">
+
+                            <div class="mvcast-item">
+                              <div class="cast-it">
+                                <div class="cast-left series-it">
+                                  <img src="images/uploads/season.jpg" alt="" />
+                                  <div>
+                                    <a href="#">Season {data.number_of_seasons}</a>
+                                    <p>{data.number_of_episodes} Episodes</p>
+                                    <p>
+                                      Season 1 of {data.name} premiered
+                                      on {data.first_air_date}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="title-hd-sm">
+                              <h4>Videos & Photos</h4>
+                              <a href="#" class="time">
+                                All 5 Videos & 245 Photos{" "}
+                                <i class="ion-ios-arrow-right"></i>
+                              </a>
+                            </div>
+                            <div class="mvsingle-item ov-item">
                               <a
-                                className="img-lightbox"
+                                class="img-lightbox"
                                 data-fancybox-group="gallery"
-                                href="images/uploads/image11.jpg"
+                                href="images/uploads/image41.jpg"
                               >
-                                <img src="images/uploads/image1.jpg" alt="" />
+                                <img src="images/uploads/image4.jpg" alt="" />
                               </a>
                               <a
-                                className="img-lightbox"
+                                class="img-lightbox"
                                 data-fancybox-group="gallery"
-                                href="images/uploads/image21.jpg"
+                                href="images/uploads/image51.jpg"
                               >
-                                <img src="images/uploads/image2.jpg" alt="" />
+                                <img src="images/uploads/image5.jpg" alt="" />
                               </a>
                               <a
-                                className="img-lightbox"
+                                class="img-lightbox"
                                 data-fancybox-group="gallery"
-                                href="images/uploads/image31.jpg"
+                                href="images/uploads/image61.jpg"
                               >
-                                <img src="images/uploads/image3.jpg" alt="" />
+                                <img src="images/uploads/image6.jpg" alt="" />
                               </a>
-                              <div className="vd-it">
+                              <div class="vd-it">
                                 <img
-                                  className="vd-img"
-                                  src="images/uploads/image4.jpg"
+                                  class="vd-img"
+                                  src="images/uploads/image7.jpg"
                                   alt=""
                                 />
                                 <a
-                                  className="fancybox-media hvr-grow"
+                                  class="fancybox-media hvr-grow"
                                   href="https://www.youtube.com/embed/o-0hcF97wy0"
                                 >
                                   <img
@@ -203,50 +229,95 @@ function MovieSingle() {
                                 </a>
                               </div>
                             </div>
-                            <div className="title-hd-sm">
+                            <div class="title-hd-sm">
                               <h4>cast</h4>
-                              <a href="#" className="time">
+                              <a href="#" class="time">
                                 Full Cast & Crew{" "}
-                                <i className="ion-ios-arrow-right"></i>
+                                <i class="ion-ios-arrow-right"></i>
                               </a>
                             </div>
-                            <div className="mvcast-item">
-                              {
-                                cast.slice(0,10).map((cast)=>{
-                                  return (
-                                    <div className="cast-it">
-                                <div className="cast-left">
-                                  <img src="images/uploads/cast9.jpg" alt="" />
-                                  <a href="#">{cast.name}</a>
+
+                            <div class="mvcast-item">
+                              <div class="cast-it">
+                                <div class="cast-left">
+                                  <img src="images/uploads/cast1.jpg" alt="" />
+                                  <a href="#">Robert Downey Jr.</a>
                                 </div>
-                                <p>... {cast.character}</p>
+                                <p>... Robert Downey Jr.</p>
                               </div>
-                                  );
-                                })
-                              }
+                              <div class="cast-it">
+                                <div class="cast-left">
+                                  <img src="images/uploads/cast2.jpg" alt="" />
+                                  <a href="#">Chris Hemsworth</a>
+                                </div>
+                                <p>... Thor</p>
+                              </div>
+                              <div class="cast-it">
+                                <div class="cast-left">
+                                  <img src="images/uploads/cast3.jpg" alt="" />
+                                  <a href="#">Mark Ruffalo</a>
+                                </div>
+                                <p>... Bruce Banner/ Hulk</p>
+                              </div>
+                              <div class="cast-it">
+                                <div class="cast-left">
+                                  <img src="images/uploads/cast4.jpg" alt="" />
+                                  <a href="#">Chris Evans</a>
+                                </div>
+                                <p>... Steve Rogers/ Captain America</p>
+                              </div>
+                              <div class="cast-it">
+                                <div class="cast-left">
+                                  <img src="images/uploads/cast5.jpg" alt="" />
+                                  <a href="#">Scarlett Johansson</a>
+                                </div>
+                                <p>... Natasha Romanoff/ Black Widow</p>
+                              </div>
+                              <div class="cast-it">
+                                <div class="cast-left">
+                                  <img src="images/uploads/cast6.jpg" alt="" />
+                                  <a href="#">Jeremy Renner</a>
+                                </div>
+                                <p>... Clint Barton/ Hawkeye</p>
+                              </div>
+                              <div class="cast-it">
+                                <div class="cast-left">
+                                  <img src="images/uploads/cast7.jpg" alt="" />
+                                  <a href="#">James Spader</a>
+                                </div>
+                                <p>... Ultron</p>
+                              </div>
+                              <div class="cast-it">
+                                <div class="cast-left">
+                                  <img src="images/uploads/cast9.jpg" alt="" />
+                                  <a href="#">Don Cheadle</a>
+                                </div>
+                                <p>... James Rhodes/ War Machine</p>
+                              </div>
                             </div>
-                            <div className="title-hd-sm">
+                            <div class="title-hd-sm">
                               <h4>User reviews</h4>
-                              <a href="#" className="time">
-                                See All {56} Reviews{" "}
-                                <i className="ion-ios-arrow-right"></i>
+                              <a href="#" class="time">
+                                See All 56 Reviews{" "}
+                                <i class="ion-ios-arrow-right"></i>
                               </a>
                             </div>
-                            <div className="mv-user-review-item">
+
+                            <div class="mv-user-review-item">
                               <h3>Best Marvel movie in my opinion</h3>
-                              <div className="no-star">
-                                <i className="ion-android-star"></i>
-                                <i className="ion-android-star"></i>
-                                <i className="ion-android-star"></i>
-                                <i className="ion-android-star"></i>
-                                <i className="ion-android-star"></i>
-                                <i className="ion-android-star"></i>
-                                <i className="ion-android-star"></i>
-                                <i className="ion-android-star"></i>
-                                <i className="ion-android-star"></i>
-                                <i className="ion-android-star last"></i>
+                              <div class="no-star">
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star last"></i>
                               </div>
-                              <p className="time">
+                              <p class="time">
                                 17 December 2016 by{" "}
                                 <a href="#"> hawaiipierson</a>
                               </p>
@@ -269,21 +340,21 @@ function MovieSingle() {
                               </p>
                             </div>
                           </div>
-                          <div className="col-md-4 col-xs-12 col-sm-12">
-                            <div className="sb-it">
+                          <div class="col-md-4 col-xs-12 col-sm-12">
+                            <div class="sb-it">
                               <h6>Director: </h6>
                               <p>
-                                <a href="#">Joss Whedon</a>
+                                <a href="#">Mark Cendrowski</a>
                               </p>
                             </div>
-                            <div className="sb-it">
+                            <div class="sb-it">
                               <h6>Writer: </h6>
                               <p>
-                                <a href="#">Joss Whedon,</a>{" "}
-                                <a href="#">Stan Lee</a>
+                                <a href="#"> Chuck Lorre,</a>{" "}
+                                <a href="#">Bill Prady</a>
                               </p>
                             </div>
-                            <div className="sb-it">
+                            <div class="sb-it">
                               <h6>Stars: </h6>
                               <p>
                                 <a href="#">Robert Downey Jr,</a>{" "}
@@ -292,7 +363,7 @@ function MovieSingle() {
                                 <a href="#"> Scarlett Johansson</a>
                               </p>
                             </div>
-                            <div className="sb-it">
+                            <div class="sb-it">
                               <h6>Genres:</h6>
                               <p>
                                 <a href="#">Action, </a>{" "}
@@ -300,95 +371,83 @@ function MovieSingle() {
                                 <a href="#">Adventure</a>
                               </p>
                             </div>
-                            <div className="sb-it">
+                            <div class="sb-it">
                               <h6>Release Date:</h6>
-                              <p>May 1, 2015 (U.S.A)</p>
+                              <p>1 May 2006 (U.S.A)</p>
                             </div>
-                            <div className="sb-it">
+                            <div class="sb-it">
                               <h6>Run Time:</h6>
-                              <p>141 min</p>
+                              <p>22 min</p>
                             </div>
-                            <div className="sb-it">
+                            <div class="sb-it">
                               <h6>MMPA Rating:</h6>
-                              <p>PG-13</p>
+                              <p>TV-14</p>
                             </div>
-                            <div className="sb-it">
+                            <div class="sb-it">
                               <h6>Plot Keywords:</h6>
-                              <p className="tags">
-                                <span className="time">
+                              <p class="tags">
+                                <span class="time">
                                   <a href="#">superhero</a>
                                 </span>
-                                <span className="time">
+                                <span class="time">
                                   <a href="#">marvel universe</a>
                                 </span>
-                                <span className="time">
+                                <span class="time">
                                   <a href="#">comic</a>
                                 </span>
-                                <span className="time">
+                                <span class="time">
                                   <a href="#">blockbuster</a>
                                 </span>
-                                <span className="time">
+                                <span class="time">
                                   <a href="#">final battle</a>
                                 </span>
                               </p>
                             </div>
-                            <div className="ads">
+                            <div class="ads">
                               <img src="images/uploads/ads1.png" alt="" />
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div id="reviews" className="tab review">
-                        <div className="row">
-                          <div className="rv-hd">
-                            <div className="div">
+                      <div id="reviews" class="tab review">
+                        <div class="row">
+                          <div class="rv-hd">
+                            <div class="div">
                               <h3>Related Movies To</h3>
                               <h2>Skyfall: Quantum of Spectre</h2>
                             </div>
-                            <a href="#" className="redbtn">
+                            <a href="#" class="redbtn">
                               Write Review
                             </a>
                           </div>
-                          <div className="topbar-filter">
+                          <div class="topbar-filter">
                             <p>
                               Found <span>56 reviews</span> in total
                             </p>
                             <label>Filter by:</label>
                             <select>
-                              <option value="popularity">
-                                Popularity Descending
-                              </option>
-                              <option value="popularity">
-                                Popularity Ascending
-                              </option>
-                              <option value="rating">Rating Descending</option>
-                              <option value="rating">Rating Ascending</option>
-                              <option value="date">
-                                Release date Descending
-                              </option>
-                              <option value="date">
-                                Release date Ascending
-                              </option>
+                              <option value="range">-- Choose option --</option>
+                              <option value="saab">-- Choose option 2--</option>
                             </select>
                           </div>
-                          <div className="mv-user-review-item">
-                            <div className="user-infor">
+                          <div class="mv-user-review-item">
+                            <div class="user-infor">
                               <img src="images/uploads/userava1.jpg" alt="" />
                               <div>
                                 <h3>Best Marvel movie in my opinion</h3>
-                                <div className="no-star">
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star last"></i>
+                                <div class="no-star">
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star last"></i>
                                 </div>
-                                <p className="time">
+                                <p class="time">
                                   17 December 2016 by{" "}
                                   <a href="#"> hawaiipierson</a>
                                 </p>
@@ -411,24 +470,24 @@ function MovieSingle() {
                               problems watching it more than once.
                             </p>
                           </div>
-                          <div className="mv-user-review-item">
-                            <div className="user-infor">
+                          <div class="mv-user-review-item">
+                            <div class="user-infor">
                               <img src="images/uploads/userava2.jpg" alt="" />
                               <div>
                                 <h3>Just about as good as the first one!</h3>
-                                <div className="no-star">
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
+                                <div class="no-star">
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
                                 </div>
-                                <p className="time">
+                                <p class="time">
                                   17 December 2016 by{" "}
                                   <a href="#"> hawaiipierson</a>
                                 </p>
@@ -473,27 +532,27 @@ function MovieSingle() {
                               version on Blu-Ray so that's cool.
                             </p>
                           </div>
-                          <div className="mv-user-review-item">
-                            <div className="user-infor">
+                          <div class="mv-user-review-item">
+                            <div class="user-infor">
                               <img src="images/uploads/userava3.jpg" alt="" />
                               <div>
                                 <h3>
                                   One of the most boring exepirences from
                                   watching a movie
                                 </h3>
-                                <div className="no-star">
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
+                                <div class="no-star">
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
                                 </div>
-                                <p className="time">
+                                <p class="time">
                                   26 March 2017 by
                                   <a href="#"> christopherfreeman</a>
                                 </p>
@@ -517,24 +576,24 @@ function MovieSingle() {
 
                             <p>10/10 because I'm a Marvel Fanboy</p>
                           </div>
-                          <div className="mv-user-review-item ">
-                            <div className="user-infor">
+                          <div class="mv-user-review-item ">
+                            <div class="user-infor">
                               <img src="images/uploads/userava4.jpg" alt="" />
                               <div>
                                 <h3>That spirit of fun</h3>
-                                <div className="no-star">
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
+                                <div class="no-star">
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
                                 </div>
-                                <p className="time">
+                                <p class="time">
                                   26 March 2017 by <a href="#"> juliawest</a>
                                 </p>
                               </div>
@@ -583,24 +642,24 @@ function MovieSingle() {
                               it so seriously.
                             </p>
                           </div>
-                          <div className="mv-user-review-item last">
-                            <div className="user-infor">
+                          <div class="mv-user-review-item last">
+                            <div class="user-infor">
                               <img src="images/uploads/userava5.jpg" alt="" />
                               <div>
                                 <h3>Impressive Special Effects and Cast</h3>
-                                <div className="no-star">
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star"></i>
-                                  <i className="ion-android-star last"></i>
-                                  <i className="ion-android-star last"></i>
+                                <div class="no-star">
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star"></i>
+                                  <i class="ion-android-star last"></i>
+                                  <i class="ion-android-star last"></i>
                                 </div>
-                                <p className="time">
+                                <p class="time">
                                   26 March 2017 by <a href="#"> johnnylee</a>
                                 </p>
                               </div>
@@ -639,15 +698,15 @@ function MovieSingle() {
                               not possible to be explained. My vote is eight.
                             </p>
                           </div>
-                          <div className="topbar-filter">
+                          <div class="topbar-filter">
                             <label>Reviews per page:</label>
                             <select>
                               <option value="range">5 Reviews</option>
                               <option value="saab">10 Reviews</option>
                             </select>
-                            <div className="pagination2">
+                            <div class="pagination2">
                               <span>Page 1 of 6:</span>
-                              <a className="active" href="#">
+                              <a class="active" href="#">
                                 1
                               </a>
                               <a href="#">2</a>
@@ -656,23 +715,23 @@ function MovieSingle() {
                               <a href="#">5</a>
                               <a href="#">6</a>
                               <a href="#">
-                                <i className="ion-arrow-right-b"></i>
+                                <i class="ion-arrow-right-b"></i>
                               </a>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div id="cast" className="tab">
-                        <div className="row">
+                      <div id="cast" class="tab">
+                        <div class="row">
                           <h3>Cast & Crew of</h3>
                           <h2>Avengers: Age of Ultron</h2>
 
-                          <div className="title-hd-sm">
+                          <div class="title-hd-sm">
                             <h4>Directors & Credit Writers</h4>
                           </div>
-                          <div className="mvcast-item">
-                            <div className="cast-it">
-                              <div className="cast-left">
+                          <div class="mvcast-item">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>JW</h4>
                                 <a href="#">Joss Whedon</a>
                               </div>
@@ -680,47 +739,47 @@ function MovieSingle() {
                             </div>
                           </div>
 
-                          <div className="title-hd-sm">
+                          <div class="title-hd-sm">
                             <h4>Directors & Credit Writers</h4>
                           </div>
-                          <div className="mvcast-item">
-                            <div className="cast-it">
-                              <div className="cast-left">
+                          <div class="mvcast-item">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>SL</h4>
                                 <a href="#">Stan Lee</a>
                               </div>
                               <p>... (based on Marvel comics)</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>JK</h4>
                                 <a href="#">Jack Kirby</a>
                               </div>
                               <p>... (based on Marvel comics)</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>JS</h4>
                                 <a href="#">Joe Simon</a>
                               </div>
                               <p>... (character created by: Captain America)</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>JS</h4>
                                 <a href="#">Joe Simon</a>
                               </div>
                               <p>... (character created by: Thanos)</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>RT</h4>
                                 <a href="#">Roy Thomas</a>
                               </div>
                               <p>... (character created by: Ultron, Vision)</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>JB</h4>
                                 <a href="#">John Buscema</a>
                               </div>
@@ -728,61 +787,61 @@ function MovieSingle() {
                             </div>
                           </div>
 
-                          <div className="title-hd-sm">
+                          <div class="title-hd-sm">
                             <h4>Cast</h4>
                           </div>
-                          <div className="mvcast-item">
-                            <div className="cast-it">
-                              <div className="cast-left">
+                          <div class="mvcast-item">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <img src="images/uploads/cast1.jpg" alt="" />
                                 <a href="#">Robert Downey Jr.</a>
                               </div>
                               <p>... Robert Downey Jr.</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <img src="images/uploads/cast2.jpg" alt="" />
                                 <a href="#">Chris Hemsworth</a>
                               </div>
                               <p>... Thor</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <img src="images/uploads/cast3.jpg" alt="" />
                                 <a href="#">Mark Ruffalo</a>
                               </div>
                               <p>... Bruce Banner/ Hulk</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <img src="images/uploads/cast4.jpg" alt="" />
                                 <a href="#">Chris Evans</a>
                               </div>
                               <p>... Steve Rogers/ Captain America</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <img src="images/uploads/cast5.jpg" alt="" />
                                 <a href="#">Scarlett Johansson</a>
                               </div>
                               <p>... Natasha Romanoff/ Black Widow</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <img src="images/uploads/cast6.jpg" alt="" />
                                 <a href="#">Jeremy Renner</a>
                               </div>
                               <p>... Clint Barton/ Hawkeye</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <img src="images/uploads/cast7.jpg" alt="" />
                                 <a href="#">James Spader</a>
                               </div>
                               <p>... Ultron</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <img src="images/uploads/cast9.jpg" alt="" />
                                 <a href="#">Don Cheadle</a>
                               </div>
@@ -790,61 +849,61 @@ function MovieSingle() {
                             </div>
                           </div>
 
-                          <div className="title-hd-sm">
+                          <div class="title-hd-sm">
                             <h4>Produced by</h4>
                           </div>
-                          <div className="mvcast-item">
-                            <div className="cast-it">
-                              <div className="cast-left">
+                          <div class="mvcast-item">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>VA</h4>
                                 <a href="#">Victoria Alonso</a>
                               </div>
                               <p>... executive producer</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>MB</h4>
                                 <a href="#">Mitchel Bell</a>
                               </div>
                               <p>... co-producer (as Mitch Bell)</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>JC</h4>
                                 <a href="#">Jamie Christopher</a>
                               </div>
                               <p>... associate producer</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>LD</h4>
                                 <a href="#">Louis D’Esposito</a>
                               </div>
                               <p>... executive producer</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>JF</h4>
                                 <a href="#">Jon Favreau</a>
                               </div>
                               <p>... executive producer</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>KF</h4>
                                 <a href="#">Kevin Feige</a>
                               </div>
                               <p>... producer</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>AF</h4>
                                 <a href="#">Alan Fine</a>
                               </div>
                               <p>... executive producer</p>
                             </div>
-                            <div className="cast-it">
-                              <div className="cast-left">
+                            <div class="cast-it">
+                              <div class="cast-left">
                                 <h4>JF</h4>
                                 <a href="#">Jeffrey Ford</a>
                               </div>
@@ -853,29 +912,29 @@ function MovieSingle() {
                           </div>
                         </div>
                       </div>
-                      <div id="media" className="tab">
-                        <div className="row">
-                          <div className="rv-hd">
+                      <div id="media" class="tab">
+                        <div class="row">
+                          <div class="rv-hd">
                             <div>
                               <h3>Videos & Photos of</h3>
-                              <h2>Skyfall: Quantum of Spectre</h2>
+                              <h2>The Big Bang Theory</h2>
                             </div>
                           </div>
-                          <div className="title-hd-sm">
+                          <div class="title-hd-sm">
                             <h4>
                               Videos <span>(8)</span>
                             </h4>
                           </div>
-                          <div className="mvsingle-item media-item">
-                            <div className="vd-item">
-                              <div className="vd-it">
+                          <div class="mvsingle-item media-item">
+                            <div class="vd-item">
+                              <div class="vd-it">
                                 <img
-                                  className="vd-img"
+                                  class="vd-img"
                                   src="images/uploads/vd-item1.jpg"
                                   alt=""
                                 />
                                 <a
-                                  className="fancybox-media hvr-grow"
+                                  class="fancybox-media hvr-grow"
                                   href="https://www.youtube.com/embed/o-0hcF97wy0"
                                 >
                                   <img
@@ -884,23 +943,23 @@ function MovieSingle() {
                                   />
                                 </a>
                               </div>
-                              <div className="vd-infor">
+                              <div class="vd-infor">
                                 <h6>
                                   {" "}
                                   <a href="#">Trailer: Watch New Scenes</a>
                                 </h6>
-                                <p className="time"> 1: 31</p>
+                                <p class="time"> 1: 31</p>
                               </div>
                             </div>
-                            <div className="vd-item">
-                              <div className="vd-it">
+                            <div class="vd-item">
+                              <div class="vd-it">
                                 <img
-                                  className="vd-img"
+                                  class="vd-img"
                                   src="images/uploads/vd-item2.jpg"
                                   alt=""
                                 />
                                 <a
-                                  className="fancybox-media hvr-grow"
+                                  class="fancybox-media hvr-grow"
                                   href="https://www.youtube.com/embed/o-0hcF97wy0"
                                 >
                                   <img
@@ -909,25 +968,25 @@ function MovieSingle() {
                                   />
                                 </a>
                               </div>
-                              <div className="vd-infor">
+                              <div class="vd-infor">
                                 <h6>
                                   {" "}
                                   <a href="#">
                                     Featurette: “Avengers Re-Assembled
                                   </a>
                                 </h6>
-                                <p className="time"> 1: 03</p>
+                                <p class="time"> 1: 03</p>
                               </div>
                             </div>
-                            <div className="vd-item">
-                              <div className="vd-it">
+                            <div class="vd-item">
+                              <div class="vd-it">
                                 <img
-                                  className="vd-img"
+                                  class="vd-img"
                                   src="images/uploads/vd-item3.jpg"
                                   alt=""
                                 />
                                 <a
-                                  className="fancybox-media hvr-grow"
+                                  class="fancybox-media hvr-grow"
                                   href="https://www.youtube.com/embed/o-0hcF97wy0"
                                 >
                                   <img
@@ -936,23 +995,23 @@ function MovieSingle() {
                                   />
                                 </a>
                               </div>
-                              <div className="vd-infor">
+                              <div class="vd-infor">
                                 <h6>
                                   {" "}
                                   <a href="#">Interview: Robert Downey Jr</a>
                                 </h6>
-                                <p className="time"> 3:27</p>
+                                <p class="time"> 3:27</p>
                               </div>
                             </div>
-                            <div className="vd-item">
-                              <div className="vd-it">
+                            <div class="vd-item">
+                              <div class="vd-it">
                                 <img
-                                  className="vd-img"
+                                  class="vd-img"
                                   src="images/uploads/vd-item4.jpg"
                                   alt=""
                                 />
                                 <a
-                                  className="fancybox-media hvr-grow"
+                                  class="fancybox-media hvr-grow"
                                   href="https://www.youtube.com/embed/o-0hcF97wy0"
                                 >
                                   <img
@@ -961,23 +1020,23 @@ function MovieSingle() {
                                   />
                                 </a>
                               </div>
-                              <div className="vd-infor">
+                              <div class="vd-infor">
                                 <h6>
                                   {" "}
                                   <a href="#">Interview: Scarlett Johansson</a>
                                 </h6>
-                                <p className="time"> 3:27</p>
+                                <p class="time"> 3:27</p>
                               </div>
                             </div>
-                            <div className="vd-item">
-                              <div className="vd-it">
+                            <div class="vd-item">
+                              <div class="vd-it">
                                 <img
-                                  className="vd-img"
+                                  class="vd-img"
                                   src="images/uploads/vd-item1.jpg"
                                   alt=""
                                 />
                                 <a
-                                  className="fancybox-media hvr-grow"
+                                  class="fancybox-media hvr-grow"
                                   href="https://www.youtube.com/embed/o-0hcF97wy0"
                                 >
                                   <img
@@ -986,7 +1045,7 @@ function MovieSingle() {
                                   />
                                 </a>
                               </div>
-                              <div className="vd-infor">
+                              <div class="vd-infor">
                                 <h6>
                                   {" "}
                                   <a href="#">
@@ -994,18 +1053,18 @@ function MovieSingle() {
                                     Witch
                                   </a>
                                 </h6>
-                                <p className="time"> 1: 31</p>
+                                <p class="time"> 1: 31</p>
                               </div>
                             </div>
-                            <div className="vd-item">
-                              <div className="vd-it">
+                            <div class="vd-item">
+                              <div class="vd-it">
                                 <img
-                                  className="vd-img"
+                                  class="vd-img"
                                   src="images/uploads/vd-item2.jpg"
                                   alt=""
                                 />
                                 <a
-                                  className="fancybox-media hvr-grow"
+                                  class="fancybox-media hvr-grow"
                                   href="https://www.youtube.com/embed/o-0hcF97wy0"
                                 >
                                   <img
@@ -1014,25 +1073,25 @@ function MovieSingle() {
                                   />
                                 </a>
                               </div>
-                              <div className="vd-infor">
+                              <div class="vd-infor">
                                 <h6>
                                   {" "}
                                   <a href="#">
                                     Interview: Director Joss Whedon
                                   </a>
                                 </h6>
-                                <p className="time"> 1: 03</p>
+                                <p class="time"> 1: 03</p>
                               </div>
                             </div>
-                            <div className="vd-item">
-                              <div className="vd-it">
+                            <div class="vd-item">
+                              <div class="vd-it">
                                 <img
-                                  className="vd-img"
+                                  class="vd-img"
                                   src="images/uploads/vd-item3.jpg"
                                   alt=""
                                 />
                                 <a
-                                  className="fancybox-media hvr-grow"
+                                  class="fancybox-media hvr-grow"
                                   href="https://www.youtube.com/embed/o-0hcF97wy0"
                                 >
                                   <img
@@ -1041,23 +1100,23 @@ function MovieSingle() {
                                   />
                                 </a>
                               </div>
-                              <div className="vd-infor">
+                              <div class="vd-infor">
                                 <h6>
                                   {" "}
                                   <a href="#">Interview: Mark Ruffalo</a>
                                 </h6>
-                                <p className="time"> 3:27</p>
+                                <p class="time"> 3:27</p>
                               </div>
                             </div>
-                            <div className="vd-item">
-                              <div className="vd-it">
+                            <div class="vd-item">
+                              <div class="vd-it">
                                 <img
-                                  className="vd-img"
+                                  class="vd-img"
                                   src="images/uploads/vd-item4.jpg"
                                   alt=""
                                 />
                                 <a
-                                  className="fancybox-media hvr-grow"
+                                  class="fancybox-media hvr-grow"
                                   href="https://www.youtube.com/embed/o-0hcF97wy0"
                                 >
                                   <img
@@ -1066,163 +1125,163 @@ function MovieSingle() {
                                   />
                                 </a>
                               </div>
-                              <div className="vd-infor">
+                              <div class="vd-infor">
                                 <h6>
                                   {" "}
                                   <a href="#">Official Trailer #2</a>
                                 </h6>
-                                <p className="time"> 3:27</p>
+                                <p class="time"> 3:27</p>
                               </div>
                             </div>
                           </div>
-                          <div className="title-hd-sm">
+                          <div class="title-hd-sm">
                             <h4>
                               Photos <span> (21)</span>
                             </h4>
                           </div>
-                          <div className="mvsingle-item">
+                          <div class="mvsingle-item">
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image11.jpg"
                             >
                               <img src="images/uploads/image1.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image21.jpg"
                             >
                               <img src="images/uploads/image2.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image31.jpg"
                             >
                               <img src="images/uploads/image3.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image41.jpg"
                             >
                               <img src="images/uploads/image4.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image51.jpg"
                             >
                               <img src="images/uploads/image5.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image61.jpg"
                             >
                               <img src="images/uploads/image6.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image71.jpg"
                             >
                               <img src="images/uploads/image7.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image81.jpg"
                             >
                               <img src="images/uploads/image8.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image91.jpg"
                             >
                               <img src="images/uploads/image9.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image101.jpg"
                             >
                               <img src="images/uploads/image10.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image111.jpg"
                             >
                               <img src="images/uploads/image1-1.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image121.jpg"
                             >
                               <img src="images/uploads/image12.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image131.jpg"
                             >
                               <img src="images/uploads/image13.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image141.jpg"
                             >
                               <img src="images/uploads/image14.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image151.jpg"
                             >
                               <img src="images/uploads/image15.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image161.jpg"
                             >
                               <img src="images/uploads/image16.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image171.jpg"
                             >
                               <img src="images/uploads/image17.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image181.jpg"
                             >
                               <img src="images/uploads/image18.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image191.jpg"
                             >
                               <img src="images/uploads/image19.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image201.jpg"
                             >
                               <img src="images/uploads/image20.jpg" alt="" />
                             </a>
                             <a
-                              className="img-lightbox"
+                              class="img-lightbox"
                               data-fancybox-group="gallery"
                               href="images/uploads/image211.jpg"
                             >
@@ -1231,11 +1290,105 @@ function MovieSingle() {
                           </div>
                         </div>
                       </div>
-                      <div id="moviesrelated" className="tab">
-                        <div className="row">
+                      <div id="season" class="tab">
+                        <div class="row">
+                          <div class="mvcast-item">
+                            <div class="cast-it">
+                              <div class="cast-left series-it">
+                                <img src="images/uploads/season.jpg" alt="" />
+                                <div>
+                                  <a href="#">Season 10</a>
+                                  <p>21 Episodes</p>
+                                  <p>
+                                    Season 10 of The Big Bang Theory premiered
+                                    on September 19, 2016.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mvcast-item">
+                            <div class="cast-it">
+                              <div class="cast-left series-it">
+                                <img src="images/uploads/season.jpg" alt="" />
+                                <div>
+                                  <a href="#">Season 10</a>
+                                  <p>21 Episodes</p>
+                                  <p>
+                                    Season 10 of The Big Bang Theory premiered
+                                    on September 19, 2016.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mvcast-item">
+                            <div class="cast-it">
+                              <div class="cast-left series-it">
+                                <img src="images/uploads/season.jpg" alt="" />
+                                <div>
+                                  <a href="#">Season 10</a>
+                                  <p>21 Episodes</p>
+                                  <p>
+                                    Season 10 of The Big Bang Theory premiered
+                                    on September 19, 2016.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mvcast-item">
+                            <div class="cast-it">
+                              <div class="cast-left series-it">
+                                <img src="images/uploads/season.jpg" alt="" />
+                                <div>
+                                  <a href="#">Season 10</a>
+                                  <p>21 Episodes</p>
+                                  <p>
+                                    Season 10 of The Big Bang Theory premiered
+                                    on September 19, 2016.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mvcast-item">
+                            <div class="cast-it">
+                              <div class="cast-left series-it">
+                                <img src="images/uploads/season.jpg" alt="" />
+                                <div>
+                                  <a href="#">Season 10</a>
+                                  <p>21 Episodes</p>
+                                  <p>
+                                    Season 10 of The Big Bang Theory premiered
+                                    on September 19, 2016.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mvcast-item">
+                            <div class="cast-it">
+                              <div class="cast-left series-it">
+                                <img src="images/uploads/season.jpg" alt="" />
+                                <div>
+                                  <a href="#">Season 10</a>
+                                  <p>21 Episodes</p>
+                                  <p>
+                                    Season 10 of The Big Bang Theory premiered
+                                    on September 19, 2016.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="moviesrelated" class="tab">
+                        <div class="row">
                           <h3>Related Movies To</h3>
                           <h2>Skyfall: Quantum of Spectre</h2>
-                          <div className="topbar-filter">
+                          <div class="topbar-filter">
                             <p>
                               Found <span>12 movies</span> in total
                             </p>
@@ -1257,25 +1410,25 @@ function MovieSingle() {
                               </option>
                             </select>
                           </div>
-                          <div className="movie-item-style-2">
+                          <div class="movie-item-style-2">
                             <img src="images/uploads/mv1.jpg" alt="" />
-                            <div className="mv-item-infor">
+                            <div class="mv-item-infor">
                               <h6>
                                 <a href="#">
                                   oblivion <span>(2012)</span>
                                 </a>
                               </h6>
-                              <p className="rate">
-                                <i className="ion-android-star"></i>
+                              <p class="rate">
+                                <i class="ion-android-star"></i>
                                 <span>8.1</span> /10
                               </p>
-                              <p className="describe">
+                              <p class="describe">
                                 Earth's mightiest heroes must come together and
                                 learn to fight as a team if they are to stop the
                                 mischievous Loki and his alien army from
                                 enslaving humanity...
                               </p>
-                              <p className="run-time">
+                              <p class="run-time">
                                 {" "}
                                 Run Time: 2h21’ . <span>
                                   MMPA: PG-13{" "}
@@ -1291,25 +1444,25 @@ function MovieSingle() {
                               </p>
                             </div>
                           </div>
-                          <div className="movie-item-style-2">
+                          <div class="movie-item-style-2">
                             <img src="images/uploads/mv2.jpg" alt="" />
-                            <div className="mv-item-infor">
+                            <div class="mv-item-infor">
                               <h6>
                                 <a href="#">
                                   into the wild <span>(2014)</span>
                                 </a>
                               </h6>
-                              <p className="rate">
-                                <i className="ion-android-star"></i>
+                              <p class="rate">
+                                <i class="ion-android-star"></i>
                                 <span>7.8</span> /10
                               </p>
-                              <p className="describe">
+                              <p class="describe">
                                 As Steve Rogers struggles to embrace his role in
                                 the modern world, he teams up with a fellow
                                 Avenger and S.H.I.E.L.D agent, Black Widow, to
                                 battle a new threat...
                               </p>
-                              <p className="run-time">
+                              <p class="run-time">
                                 {" "}
                                 Run Time: 2h21’ . <span>
                                   MMPA: PG-13{" "}
@@ -1326,25 +1479,25 @@ function MovieSingle() {
                               </p>
                             </div>
                           </div>
-                          <div className="movie-item-style-2">
+                          <div class="movie-item-style-2">
                             <img src="images/uploads/mv3.jpg" alt="" />
-                            <div className="mv-item-infor">
+                            <div class="mv-item-infor">
                               <h6>
                                 <a href="#">
                                   blade runner <span>(2015)</span>
                                 </a>
                               </h6>
-                              <p className="rate">
-                                <i className="ion-android-star"></i>
+                              <p class="rate">
+                                <i class="ion-android-star"></i>
                                 <span>7.3</span> /10
                               </p>
-                              <p className="describe">
+                              <p class="describe">
                                 Armed with a super-suit with the astonishing
                                 ability to shrink in scale but increase in
                                 strength, cat burglar Scott Lang must embrace
                                 his inner hero and help...
                               </p>
-                              <p className="run-time">
+                              <p class="run-time">
                                 {" "}
                                 Run Time: 2h21’ . <span>
                                   MMPA: PG-13{" "}
@@ -1359,24 +1512,24 @@ function MovieSingle() {
                               </p>
                             </div>
                           </div>
-                          <div className="movie-item-style-2">
+                          <div class="movie-item-style-2">
                             <img src="images/uploads/mv4.jpg" alt="" />
-                            <div className="mv-item-infor">
+                            <div class="mv-item-infor">
                               <h6>
                                 <a href="#">
                                   Mulholland pride<span> (2013) </span>
                                 </a>
                               </h6>
-                              <p className="rate">
-                                <i className="ion-android-star"></i>
+                              <p class="rate">
+                                <i class="ion-android-star"></i>
                                 <span>7.2</span> /10
                               </p>
-                              <p className="describe">
+                              <p class="describe">
                                 When Tony Stark's world is torn apart by a
                                 formidable terrorist called the Mandarin, he
                                 starts an odyssey of rebuilding and retribution.
                               </p>
-                              <p className="run-time">
+                              <p class="run-time">
                                 {" "}
                                 Run Time: 2h21’ . <span>
                                   MMPA: PG-13{" "}
@@ -1392,24 +1545,24 @@ function MovieSingle() {
                               </p>
                             </div>
                           </div>
-                          <div className="movie-item-style-2">
+                          <div class="movie-item-style-2">
                             <img src="images/uploads/mv5.jpg" alt="" />
-                            <div className="mv-item-infor">
+                            <div class="mv-item-infor">
                               <h6>
                                 <a href="#">
                                   skyfall: evil of boss<span> (2013) </span>
                                 </a>
                               </h6>
-                              <p className="rate">
-                                <i className="ion-android-star"></i>
+                              <p class="rate">
+                                <i class="ion-android-star"></i>
                                 <span>7.0</span> /10
                               </p>
-                              <p className="describe">
+                              <p class="describe">
                                 When Tony Stark's world is torn apart by a
                                 formidable terrorist called the Mandarin, he
                                 starts an odyssey of rebuilding and retribution.
                               </p>
-                              <p className="run-time">
+                              <p class="run-time">
                                 {" "}
                                 Run Time: 2h21’ . <span>
                                   MMPA: PG-13{" "}
@@ -1425,20 +1578,20 @@ function MovieSingle() {
                               </p>
                             </div>
                           </div>
-                          <div className="topbar-filter">
+                          <div class="topbar-filter">
                             <label>Movies per page:</label>
                             <select>
                               <option value="range">5 Movies</option>
                               <option value="saab">10 Movies</option>
                             </select>
-                            <div className="pagination2">
+                            <div class="pagination2">
                               <span>Page 1 of 2:</span>
-                              <a className="active" href="#">
+                              <a class="active" href="#">
                                 1
                               </a>
                               <a href="#">2</a>
                               <a href="#">
-                                <i className="ion-arrow-right-b"></i>
+                                <i class="ion-arrow-right-b"></i>
                               </a>
                             </div>
                           </div>
@@ -1456,4 +1609,4 @@ function MovieSingle() {
   );
 }
 
-export default MovieSingle;
+export default SeriesSingle;

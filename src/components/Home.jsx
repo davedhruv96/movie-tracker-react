@@ -11,7 +11,7 @@ function Home() {
     <>
         <MovieSlider />
         <MovieItems />
-        <Trailers />
+        {/* <Trailers /> */}
         <Latestnew />
     </>
   )
